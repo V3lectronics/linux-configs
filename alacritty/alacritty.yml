@@ -1,0 +1,29 @@
+font:
+  # size: 9.5
+  size: 10
+  bold:
+    family: SpaceMono Nerd Font
+    style: Bold
+  bold_italic:
+    family: SpaceMono Nerd Font
+    style: Bold Italic
+  italic:
+    family: SpaceMono Nerd Font
+    style: Italic
+  normal:
+    family: SpaceMono Nerd Font
+    style: Regular
+
+fc-list : family style
+
+keyboard:
+  bindings:
+    - key: Return
+      mods: Control|Shift
+      action: SpawnNewInstance
+
+mouse:
+  hide_when_typing: true
+
+shell:
+  program: /bin/zsh

@@ -1,0 +1,126 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# --- BACKGROUND ---
+# xsetroot -cursor-name left_ptr &
+# xsetroot -solid "#121212" &
+# feh --bg-fill $HOME/Pictures/wallpaper.png &
+feh --bg-max $HOME/Pictures/wallpapers/wallpaper.png &
+
+# --- CLIPMENU ---
+
+#clipmenud &
+
+polybar &
+
+flameshot & #disown &
+
+# --- MONITORS ---
+
+# Wait for X to be fully started
+#sleep 2
+
+# Check for HDMI connection
+if xrandr | grep -q 'HDMI-1-0 connected'; then
+	# 16:9
+    # xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal --output HDMI-1-0 --mode 1920x1080 --rotate normal --right-of eDP-1
+	# 4:3
+    xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal --output HDMI-1-0 --mode 1280x1024 --rotate normal --right-of eDP-1
+    
+    # Wait for xrandr to finish
+#    sleep 2
+    
+    # Set up BSPWM desktops
+    bspc monitor eDP-1 -d 1 2 3 4 5
+    bspc monitor HDMI-1-0 -d 6 7 8 9 10
+else
+    # Single monitor setup
+    xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal
+    bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10
+fi
+
+#if [[ $(xrandr -q | grep 'HDMI-1-0') ]]; then
+#	xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal --output HDMI-1-0 --mode 1920x1080 --rotate normal --right-of eDP-1
+#	bspc monitor eDP-1 -d 1 2 3 4 5
+#	bspc monitor HDMI-1-0 -d 6 7 8 9 10
+#
+#	#xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal --output HDMI-1-0 --mode 1920x1080 --rotate normal --right-of eDP1
+#	#xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal --output HDMI-1-0 --mode 1280x1024 --rotate normal --right-of eDP-1
+#else
+#	xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal
+#	bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10
+#fi
+
+
+#bspc monitor -d I II III IV V VI VII VIII IX X
+# bspc monitor eDP1 -d 1 2 3 4 5 6
+# bspc monitor HDMI-1-0 -d 7 8 9 10
+
+
+# INTERNAL_MONITOR="eDP1"
+# EXTERNAL_MONITOR="HDMI-1-0"
+# on first load setup default workspaces
+# if [[ "$1" = 0 ]]; then
+#   if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
+#     bspc monitor "$INTERNAL_MONITOR" -d 1 2 3 4 5
+#     bspc monitor "$EXTERNAL_MONITOR" -d 6 7 8 9 10
+#     # bspc wm -O "$EXTERNAL_MONITOR" "$INTERNAL_MONITOR"
+#   else
+#     bspc monitor "$INTERNAL_MONITOR" -d 1 2 3 4 5 6 7 8 9 10
+#   fi
+# fi
+#
+# monitor_add() {
+#   # Move first 5 desktops to external monitor
+#   for desktop in $(bspc query -D --names -m "$INTERNAL_MONITOR" | sed 5q); do
+#     bspc desktop "$desktop" --to-monitor "$EXTERNAL_MONITOR"
+#   done
+#
+#   # Remove default desktop created by bspwm
+#   bspc desktop Desktop --remove
+#
+#   # reorder monitors
+#   bspc wm -O "$EXTERNAL_MONITOR" "$INTERNAL_MONITOR"
+# }
+#
+# monitor_remove() {
+#   # Add default temp desktop because a minimum of one desktop is required per monitor
+#   bspc monitor "$EXTERNAL_MONITOR" -a Desktop
+#
+#   # Move all desktops except the last default desktop to internal monitor
+#   for desktop in $(bspc query -D -m "$EXTERNAL_MONITOR");	do
+#     bspc desktop "$desktop" --to-monitor "$INTERNAL_MONITOR"
+#   done
+#
+#   # delete default desktops
+#   bspc desktop Desktop --remove
+#
+#   # reorder desktops
+#   bspc monitor "$INTERNAL_MONITOR" -o 1 2 3 4 5 6 7 8 9 10
+# }
+#
+# if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
+#   # set xrandr rules for docked setup
+#   xrandr --output "$INTERNAL_MONITOR" --mode 1920x1080 --pos 0x0 --rotate normal --output "$EXTERNAL_MONITOR" --primary --mode 1920x1080 --pos 1920x0 --rotate normal
+#   if [[ $(bspc query -D -m "${EXTERNAL_MONITOR}" | wc -l) -ne 5 ]]; then
+#     monitor_add
+#   fi
+#   bspc wm -O "$EXTERNAL_MONITOR" "$INTERNAL_MONITOR"
+# else
+#   # set xrandr rules for mobile setup
+#   xrandr --output "$INTERNAL_MONITOR" --primary --mode 1920x1080 --pos 0x0 --rotate normal --output "$EXTERNAL_MONITOR" --off
+#   if [[ $(bspc query -D -m "${INTERNAL_MONITOR}" | wc -l) -ne 10 ]]; then
+#     monitor_remove
+#   fi
+# fi
+
+
+
+# --- WINDOWS ---
+
+bspc config border_width        2
+bspc config window_gap          0 
+bspc config split_ratio          0.5
+bspc config borderless_monocle   false
+bspc config gapless_monocle      true
