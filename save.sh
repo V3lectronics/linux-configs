@@ -19,7 +19,7 @@ echo '========== Commiting updates to git... =========='
 git config --global user.email "niszczyciel.agawa@gmail.com"
 git config --global user.name "barbarjan"
 git add .
-git restore --staged .git
+# git restore --staged .git
 git commit -m 'automatically udpate config files'
 # git push
 
