@@ -13,6 +13,9 @@ require("mason-lspconfig").setup({
 require("lspconfig").lua_ls.setup {}
 require('lspconfig').pyright.setup {}
 require('lspconfig').bashls.setup{}
+-- require('lspconfig').beautysh.setup{} --perhaps these aren't servers and i
+-- can't require them this way.
+-- require('lspconfig').shellcheck.setup{}
 require('lspconfig').tsserver.setup{}
 require('lspconfig').html.setup{}
 require('lspconfig').cssls.setup{}
