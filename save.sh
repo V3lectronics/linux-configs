@@ -15,12 +15,12 @@ cp -r $USER_HOME/.config/nvim .
 echo 'Updating installed packages list... '
 apt list --installed > installed_apt_packages.txt
 
-echo 'Pushing updates to git... '
+echo 'Commiting updates to git... '
 git config --global user.email "niszczyciel.agawa@gmail.com"
 git config --global user.name "barbarjan"
 git add .
 git restore --staged .git
 git commit -m 'automatically udpate config files'
-git push
+# git push
 
 echo 'Finished... '
