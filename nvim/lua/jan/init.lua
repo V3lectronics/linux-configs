@@ -4,6 +4,9 @@ require("jan.remap")
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- change shell
+vim.opt.shell = 'zsh'
+
 -- Indentation settings
 vim.opt.autoindent = true
 vim.opt.tabstop = 4
@@ -34,7 +37,9 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '  ', trail = '·' }  -- Customize tab and trailing spaces
 -- vim.opt.listchars = { trail = '·' }  -- Customize tab and trailing spaces
 
--- Text width
+-- Text formating
+vim.opt.formatoptions:append('t')
+vim.opt.formatoptions:append('c')
 vim.opt.textwidth = 80
 -- vim.opt.wrap = false  -- Uncomment if you want to disable line wrapping
 
@@ -42,6 +47,37 @@ vim.opt.textwidth = 80
 vim.api.nvim_create_user_command('W', 'write', {})
 vim.api.nvim_create_user_command('Wq', 'wq', {})
 vim.api.nvim_create_user_command('Q', 'q', {})
+
+
+-- Default path autocomp
+-- vim.api.nvim_create_autocmd("InsertCharPre", {
+--     pattern = "*",
+--     callback = function()
+--         local char = vim.fn.getline('.'):sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1)
+--         if char == '/' then
+--             vim.cmd("startinsert")
+--             vim.fn.feedkeys("<C-x><C-f>", "n")
+--         end
+--     end,
+-- })
+--
+-- Default autocomp
+-- local triggers = {"a"}
+--
+-- vim.api.nvim_create_autocmd("InsertCharPre", {
+--   buffer = vim.api.nvim_get_current_buf(),
+--   callback = function()
+--     if vim.fn.pumvisible() == 1 or vim.fn.mode() == "i" then
+--       return
+--     end
+--     local char = vim.v.char
+--     if vim.list_contains(triggers, char) then
+--       -- Trigger the completion menu without auto-selecting the first item
+--       local key = vim.keycode("<C-x><C-n>")
+--       vim.api.nvim_feedkeys(key, "n", false) -- Use "n" instead of "m"
+--     end
+--   end
+-- })
 
 -- Set colorscheme
 -- vim.cmd [[colorscheme challenger_deep]]

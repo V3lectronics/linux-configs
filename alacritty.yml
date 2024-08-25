@@ -16,6 +16,10 @@ font:
 
 fc-list : family style
 
+colors:
+  primary:
+    background: '#14161b'
+
 keyboard:
   bindings:
     - key: Return
@@ -27,3 +31,9 @@ mouse:
 
 shell:
   program: /bin/zsh
+  # args:
+  #   - -c
+  #   - nvim -c "term" -c "startinsert"
+  #
+key_bindings:
+  - { key: N, mods: Control|Shift, action: SpawnNewInstance }

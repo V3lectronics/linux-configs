@@ -10,10 +10,6 @@ require("mason-lspconfig").setup({
 	ensure_installed = { "lua_ls", "pyright", "bashls", "tsserver", "html", "cssls", "arduino_language_server", "clangd", "ast_grep" }
 })
 
--- ◍ cpplint (keywords: c, c++)
---     ◍ cpptools (keywords: c, c++, rust)
---     ◍
---
 require("lspconfig").lua_ls.setup {}
 require('lspconfig').pyright.setup {}
 require('lspconfig').bashls.setup{}
@@ -24,6 +20,7 @@ require('lspconfig').arduino_language_server.setup{}
 require('lspconfig').clangd.setup{}
 require('lspconfig').ast_grep.setup{}
 
+-- is cpplint working?
 
 -- COMPLETION
 
@@ -36,19 +33,59 @@ local cmp_mappings = {
 }
 
 -- Configure nvim-cmp
+
+require("cmp_dictionary").setup({
+  paths = { "/usr/share/dict/words" },
+  exact_length = 2,
+})
+
 cmp.setup({
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For LuaSnip users
+            require('luasnip').lsp_expand(args.body) -- for luasnip users
         end,
     },
     mapping = cmp.mapping.preset.insert(cmp_mappings),
     sources = {
-        { name = 'nvim_lsp' },
-        { name = 'buffer' },
-        { name = 'path' },
-        { name = 'luasnip' },
+        {
+			name = 'path'
+		},
+        {
+			name = 'nvim_lsp',
+			max_item_count = 7,
+		},
+        -- {
+		-- 	name = 'pyright'
+		-- },
+        -- {
+		-- 	name = 'clangd'
+		-- },
+		-- {
+		-- 	name = 'html'
+		-- },
+        -- {
+		-- 	name = 'cssls'
+		-- },
+        -- {
+		-- 	name = 'bashls'
+		-- },
+        {
+			name = 'luasnip'
+		},
+        {
+			name = 'buffer',
+			max_item_count = 8,
+		},
+		{
+			name = "dictionary",
+			keyword_length = 2,
+			max_item_count = 6,
+		},
     },
+	-- completion = {
+	-- 	completeopt = 'menu,menuone,noinsert', -- Set completion options - what is this?
+	-- 	max_item_count = 5,                        -- Global limit for completion items
+	-- },
 })
 
 -- Set preferences for LSP
@@ -66,6 +103,20 @@ lsp.set_preferences({
 
     },
 })
+
+-- English
+
+-- require("cmp").setup({
+--   -- other settings
+--   sources = {
+--     -- other sources
+--     {
+--       name = "dictionary",
+--       keyword_length = 2,
+--     },
+--   }
+-- })
+
 
 -- Setup LSP servers
 lsp.setup()

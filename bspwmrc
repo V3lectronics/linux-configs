@@ -8,13 +8,24 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 # feh --bg-fill $HOME/Pictures/wallpaper.png &
 feh --bg-max $HOME/Pictures/wallpapers/wallpaper.png &
 
-# --- CLIPMENU ---
+# --- clipboard manager ---
 
 #clipmenud &
 
+# diodon &
+# pkill diodon &
+
+# --- status bar ---
+
 polybar &
 
+# --- screenshots ---
+
 flameshot & #disown &
+
+# --- reduce blue light ---
+
+redshift -P -O 3500 &
 
 # --- MONITORS ---
 
@@ -24,9 +35,10 @@ flameshot & #disown &
 # Check for HDMI connection
 if xrandr | grep -q 'HDMI-1-0 connected'; then
 	# 16:9
-    # xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal --output HDMI-1-0 --mode 1920x1080 --rotate normal --right-of eDP-1
+    xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal --output HDMI-1-0 --mode 1920x1080 --rotate normal --right-of eDP-1
+
 	# 4:3
-    xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal --output HDMI-1-0 --mode 1280x1024 --rotate normal --right-of eDP-1
+    # xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal --output HDMI-1-0 --mode 1280x1024 --rotate normal --right-of eDP-1
     
     # Wait for xrandr to finish
 #    sleep 2

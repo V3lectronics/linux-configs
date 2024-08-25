@@ -1,15 +1,9 @@
-# gracz sxhkd
 # jw sxhkd
-
-
-
-#
-# wm independent hotkeys
-#
 
 # terminal emulator
 super + Return
 	alacritty
+    # nvim -c "term"
 	# xst
 	# cool-retro-term	
 	# xterm
@@ -191,6 +185,17 @@ super + F1
 super + shift + F1
 	pkill polybar && bspc config top_padding 0
 
+# blue light
+super + F2
+	redshift -P -O 4800
+
+# less blue light
+super + F3
+	redshift -P -O 3500
+
+# piss
+super + F4
+	redshift -P -O 2500
 
 
 # lemonbar

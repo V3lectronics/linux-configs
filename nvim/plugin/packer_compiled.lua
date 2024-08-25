@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/jan/.local/share/nvim/site/pack/packer/start/autoclose.nvim",
     url = "https://github.com/m4xshen/autoclose.nvim"
   },
+  ["cmp-dictionary"] = {
+    loaded = true,
+    path = "/home/jan/.local/share/nvim/site/pack/packer/start/cmp-dictionary",
+    url = "https://github.com/uga-rosa/cmp-dictionary"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/jan/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",

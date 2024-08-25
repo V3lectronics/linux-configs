@@ -22,7 +22,10 @@ return require('packer').startup(function(use)
   use ( 'm4xshen/autoclose.nvim' )
   use ( 'stevearc/vim-arduino' )
   use ( 'ThePrimeagen/harpoon' )
+  -- use ( 'lukas-reineke/cmp-rg')
+  use ( 'uga-rosa/cmp-dictionary')
 
+-- use ( 'hrsh7th/nvim-cmp')
 --  use (  'vim-airline/vim-airline' )
 --  use (  'vim-airline/vim-airline-themes' )
 

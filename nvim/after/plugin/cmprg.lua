@@ -1,0 +1,57 @@
+-- local cmp = require 'cmp'
+
+-- Specify the full path to the cmp_english_words.lua file
+-- local english_words_source = require(vim.fn.stdpath('config') .. '/after/plugin/cmp_english_words.lua')
+-- require('cmp_english_words')
+
+-- cmp.setup {
+--   snippet = {
+--     expand = function(args)
+--       -- Use your preferred snippet engine here
+--       vim.fn["vsnip#anonymous"](args.body) -- For vsnip
+--       -- or use luasnip or others
+--     end,
+--   },
+--   -- mapping = {
+--   --   ['<C-n>'] = cmp.mapping.select_next_item(), -- Select next item
+--   --   ['<C-p>'] = cmp.mapping.select_prev_item(), -- Select previous item
+--   --   ['<C-Space>'] = cmp.mapping.complete(),      -- Trigger completion
+--   --   ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Confirm selection
+--   -- },
+--   sources = {
+--     {
+--       name = 'rg',
+--       options = {
+--         -- Specify additional options for ripgrep
+--         args = {
+--           '--max-columns=120',  -- Limit the number of columns
+--           '--max-depth=4',      -- Limit the depth of the search
+--           '--word-regexp',      -- Match whole words
+--           '--ignore-case',      -- Ignore case
+--         },
+--         pattern = [[\b(var|let|const|function|class|import|export|def|the)\b.*]],       -- Adjust the pattern for what you want to match
+--       },
+--     },
+--     { name = 'path', priority = 1 },          -- Path completions
+--     { name = 'buffer' },        -- Buffer completions
+--     { name = 'nvim_lsp' },      -- LSP completions
+-- 	{ name = 'english_words', keyword_length = 2, priority = 2 },
+--   },
+--   formatting = {
+--     format = function(entry, vim_item)
+--       vim_item.kind = string.format('%s', vim_item.kind) -- Customize kind display
+--       return vim_item
+--     end,
+--   },
+-- }
+--
+-- require("cmp").setup {
+-- 	sources = {
+-- 		{
+-- 			name = "rg",
+-- 			-- Try it when you feel cmp performance is poor
+-- 			--  I don't know that does this do but ok
+-- 				-- keyword_length = 3
+-- 		},
+-- 	},
+-- }
