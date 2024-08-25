@@ -24,3 +24,4 @@ git commit -m 'automatically udpate config files'
 # git push
 
 echo 'Finished... '
+echo "You can 'git push' now"
