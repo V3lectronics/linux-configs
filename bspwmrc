@@ -2,11 +2,15 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-# --- BACKGROUND ---
+# --- background ---
 # xsetroot -cursor-name left_ptr &
 # xsetroot -solid "#121212" &
 # feh --bg-fill $HOME/Pictures/wallpaper.png &
 feh --bg-max $HOME/Pictures/wallpapers/wallpaper.png &
+
+# --- key remaps ---
+
+xmodmap .Xmodmap &
 
 # --- clipboard manager ---
 

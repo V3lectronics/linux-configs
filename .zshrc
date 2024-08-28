@@ -81,9 +81,13 @@ alias mp4tomov='function _mp4tomov() { ffmpeg -i "$1" -c:v qtrle -c:a pcm_s16le 
 weather_function() {
     curl https://wttr.in/$*
 }
-
 alias weather='weather_function'
 
+keypress_function() {
+	screenkey -p fixed -g $(slop -n -f '%g')
+}
+
+alias screenkey="keypress_function"
 alias lpdf='ls | grep ".pdf"'
 alias lpng='ls | grep ".png"'
 alias limg='ls | grep ".png" && ls | grep ".jpg"  && ls | grep ".jpeg"'
