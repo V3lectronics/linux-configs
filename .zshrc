@@ -72,11 +72,9 @@ cpp_compile(){
 
 alias cpp='cpp_compile'
 
-#alias weather='curl https://wttr.in/Warsaw'
-#alias weather='curl https://wttr.in/"$1"'
-
 alias movtomp3='function _movtomp3() { ffmpeg -i "$1" -vn -acodec libmp3lame -b:a 128k "$2"; }; _movtomp3'
 alias mp4tomov='function _mp4tomov() { ffmpeg -i "$1" -c:v qtrle -c:a pcm_s16le "$2"; }; _mp4tomov'
+alias bill='cd ~/code/bill && source billenv/bin/activate'
 
 weather_function() {
     curl https://wttr.in/$*
@@ -86,7 +84,6 @@ alias weather='weather_function'
 keypress_function() {
 	screenkey -p fixed -g $(slop -n -f '%g')
 }
-
 alias screenkey="keypress_function"
 alias lpdf='ls | grep ".pdf"'
 alias lpng='ls | grep ".png"'
